@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIP Dosage Calculator</title>
+
+<style>
+body{
+font-family: Arial;
+background:#f5f5f5;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:10px;
+max-width:400px;
+margin:auto;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+font-size:16px;
+}
+
+button{
+background:#2c7be5;
+color:white;
+border:none;
+padding:12px 20px;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+font-size:18px;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>FIP Dosage Calculator</h2>
+
+<label>Cat Weight (kg)</label>
+<input type="number" id="weight" step="0.1">
+
+<label>Dosage (mg/kg)</label>
+<input type="number" id="dose" value="12">
+
+<label>Drug Concentration (mg/ml)</label>
+<input type="number" id="conc" value="20">
+
+<button onclick="calc()">Calculate</button>
+
+<div class="result" id="result"></div>
+</div>
+
+<script>
+function calc(){
+
+let weight=document.getElementById("weight").value;
+let dose=document.getElementById("dose").value;
+let conc=document.getElementById("conc").value;
+
+let totalmg = weight * dose;
+let ml = totalmg / conc;
+
+document.getElementById("result").innerHTML =
+"Required: " + totalmg.toFixed(2) + " mg<br>" +
+"Injection: " + ml.toFixed(2) + " ml";
+}
+</script>
+
+</body>
+</html>
